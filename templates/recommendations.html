@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>Job Recommendations</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Job Recommendations</h1>
+        
+        <h2>Recommended Jobs</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Job Title</th>
+                    <th>Company</th>
+                    <th>Location</th>
+                    <th>Similarity</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for job in jobs.iterrows() %}
+                    <tr>
+                        <td>{{ job[1].JobTitle }}</td>
+                        <td>{{ job[1].CompanyID }}</td>
+                        <td>{{ job[1].Location }}</td>
+                        <td>{{ job[1].Similarity }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        
+        <h2>Recommended Companies</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Company ID</th>
+                    <th>Location</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for company in companies.iterrows() %}
+                    <tr>
+                        <td>{{ company[1].CompanyID }}</td>
+                        <td>{{ company[1].Location }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        
+        <h2>Similar Candidates</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Candidate ID</th>
+                    <th>Similarity</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for candidate in candidates.iterrows() %}
+                    <tr>
+                        <td>{{ candidate[1].CandidateID }}</td>
+                        <td>{{ candidate[1].Similarity }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
