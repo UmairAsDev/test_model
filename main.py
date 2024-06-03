@@ -4,12 +4,13 @@ from pymongo import MongoClient
 from sklearn.preprocessing import LabelEncoder
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
+import os
 # from sklearn.metrics import accuracy_score, f1_score, recall_score, precision_score
 import pickle
 import logging
 
 # MongoDB setup
-client = MongoClient('mongodb+srv://UmairAsDev:hiiammlengieer@cluster0.pmedxt4.mongodb.net/job_recommendation')
+client = MongoClient(os.getenv('STRING_KEY'))
 db = client['job_recommendation']
 
 candidates_collection = db['candidates']

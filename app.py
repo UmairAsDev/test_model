@@ -3,6 +3,7 @@ import pandas as pd
 import pickle
 from pymongo import MongoClient
 from main import hybrid_recommendation
+import os
 app = Flask(__name__)
 
 # Load models and data
@@ -22,7 +23,7 @@ with open('models/companies.pkl', 'rb') as f:
     companies = pickle.load(f)
 
 def load_candidates():
-    client = MongoClient('mongodb+srv://UmairAsDev:hiiammlengieer@cluster0.pmedxt4.mongodb.net/job_recommendation')
+    client = MongoClient(os.getenv('STRING_KEY'))
     db = client['job_recommendation']
     candidates_collection = db['candidates']
     candidates = pd.DataFrame(list(candidates_collection.find()))
